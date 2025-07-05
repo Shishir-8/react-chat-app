@@ -3,13 +3,13 @@ import Chat from './Chat'
 import { io } from 'socket.io-client'
 
 
-console.log(import.meta.env.VITE_BACKEND_URL)
 
-
-const socket = io(import.meta.env.VITE_BACKEND_URL, {
+const socket = io(import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000', {
     transports: ['websocket', 'polling'],
     withCredentials: true
 })
+
+
 
 const App = () => {
     const [username, setUsername] = useState('')

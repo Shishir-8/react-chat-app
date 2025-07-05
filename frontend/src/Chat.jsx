@@ -19,6 +19,7 @@ const Chat = ({socket, room, username}) => {
         // sending msgData to backend
       await socket.emit('send_message', msgData)
       setMsgList((prev)=> [...prev, msgData])
+      setMessage('')
 
     }
   }
@@ -62,7 +63,7 @@ useEffect(()=>{
 
 
 
-        <div className='absolute bottom-0 w-full left-0 p-3'>
+        <div className='fixed bottom-0 w-full  p-3'>
           <form
           onSubmit={sendMessage}
           className='flex gap-2'>
