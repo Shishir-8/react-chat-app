@@ -11,19 +11,35 @@ const server = http.createServer(app)
 
 
 
-app.use(cors({
-    origin: process.env.REACT_URL,
-    methods: ["GET", "POST"],
-    credentials: true
-}))
+
+const allowedOrigins = [
+    process.env.REACT_URL,
+    'http://localhost:5173',
+]
+
+console.log(allowedOrigins)
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST']
+};
+
+
+
+
+app.use(cors(corsOptions))
 
 const io = new Server(server, {
-    cors:{
-        origin: process.env.REACT_URL,
-        methods: ["GET", "POST"],
-        credentials: true
-    }
+    cors: corsOptions
 })
+
 
 
 io.on('connection', (socket)=>{
