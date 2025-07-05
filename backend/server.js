@@ -8,7 +8,10 @@ const PORT = process.env.PORT || 3000
 const http = require('http')
 const server = http.createServer(app)
 
-app.use(cors())
+app.use(cors({
+    origin: process.env.REACT_URL,
+    methods: ["GET", "POST"]
+}))
 
 const io = new Server(server, {
     cors:{
