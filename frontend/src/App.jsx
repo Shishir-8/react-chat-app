@@ -3,23 +3,18 @@ import Chat from './Chat'
 import { io } from 'socket.io-client'
 
 
-
-
+console.log(import.meta.env.VITE_BACKEND_URL)
 
 
 const socket = io(import.meta.env.VITE_BACKEND_URL, {
+    transports: ['websocket', 'polling'],
     withCredentials: true
 })
 
-
 const App = () => {
-
     const [username, setUsername] = useState('')
     const [room, setRoom] = useState('')
     const [showChatBox, setShowChatBox] = useState(false)
-
-
-
 
   const joinRoom = (e)=>{
     e.preventDefault()
@@ -28,8 +23,6 @@ const App = () => {
       socket.emit("join_room", room)
       setShowChatBox(true)
     }
-
-   
   }
 
     return (
