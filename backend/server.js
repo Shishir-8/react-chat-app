@@ -23,7 +23,7 @@ app.use(cors({
 
 const io = new Server(server, {
     cors:{
-        origin: "http://localhost:5174",
+        origin: process.env.REACT_URL,
         methods: ["GET", "POST"],
         credentials: true,
     }
