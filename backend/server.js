@@ -10,13 +10,15 @@ const server = http.createServer(app)
 
 app.use(cors({
     origin: process.env.REACT_URL,
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST"],
+    credentials: true
 }))
 
 const io = new Server(server, {
     cors:{
         origin: process.env.REACT_URL,
-        methods: ["GET", "POST"]
+        methods: ["GET", "POST"],
+        credentials: true
     }
 })
 
