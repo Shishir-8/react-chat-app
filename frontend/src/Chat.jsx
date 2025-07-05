@@ -37,7 +37,7 @@ useEffect(()=>{
   return (
     <div className='flex justify-center items-center h-screen'>
 
-      <div className='border border-white/10 max-w-sm w-full h-[500px] shadow-xl rounded-lg p-2 relative  ' >
+      <div className=' border-white/10 max-w-sm w-full h-[600px] rounded-lg  relative  ' >
 
         <div className='h-full overflow-y-auto '>
 

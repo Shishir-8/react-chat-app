@@ -14,6 +14,10 @@ const server = http.createServer(app)
 app.use(express.json())
 
 
+
+
+
+
 app.use(cors({
     origin: process.env.REACT_URL,
     methods:["GET", "POST"],
